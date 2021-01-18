@@ -1,26 +1,45 @@
 # TO-DO: Complete the selection_sort() function below
+# TC stands for time complexity - how long does it take to run this a function
+# SC stands for space complexity - how much extra space do we need to allocate in space to run a function
+
 def selection_sort(arr):
     # loop through n-1 elements
-    for i in range(0, len(arr) - 1):
-        cur_index = i
-        smallest_index = cur_index
+    for i in range(len(arr) - 1):                       # TC: O(n) # Range defaults to start at zero if you don't give it an initial position
+        cur_index = i                                   # TC: O(1) # SC: O(1)
+        smallest_index = cur_index                      # TC: O(1) # SC: O(1)
         # TO-DO: find next smallest element
-        # (hint, can do in 3 loc)
-        # Your code here
-
+        # (hint, can do in 3 lines of code )
+        for j in range(cur_index, len(arr)):            # TC: O(log n) - goes through less and less of the lenght of thet array each time # It's only len(arr) and not len(arr) - 1 becuase we need it to compare one thing further?
+            if arr[j] < arr[smallest_index]:            # TC: O(1)
+                smallest_index = j                      # TC: O(1) # SC: O(1)
 
         # TO-DO: swap
-        # Your code here
+        arr[cur_index], arr[smallest_index] = arr[smallest_index], arr[cur_index]       # TC: O(1)
 
     return arr
+    
+    # Time Complexity: 
+    # (n)(1 + 1 + log n)(1 + 1)
+    # n * 2 log n * 2
+    # 2n * 2log n
+    # Final Time Complexity: O(n log n)
+
+    # Space Complexity:
+    # 1 + 1 + 1
+    # Final Space Complexity: O(1)
 
 
 # TO-DO:  implement the Bubble Sort function below
 def bubble_sort(arr):
-    # Your code here
-
+    for i in range(len(arr) - 1):                       # TC: O(n)      # this will loop through the length of the array
+        for j in range(len(arr) - 1 - i):               # TC: O(log n)  # this will loop from the beginning until the last one - i value - the shorter array 
+            if arr[j] > arr[j + 1]:                     # TC: O(1)
+                arr[j], arr[j + 1] = arr[j + 1], arr[j] # TC: O(1)
 
     return arr
+
+# Final Time Complexity: O(n log n)
+# Final Space Complexity: O(1) # We are not creating a new variable - we don't use up any new space
 
 '''
 STRETCH: implement the Counting Sort function below
